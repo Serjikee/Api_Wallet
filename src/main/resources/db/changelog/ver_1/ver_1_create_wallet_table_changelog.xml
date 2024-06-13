@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="ver_1_1" author="Bulankin Sergey">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="wallet"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="wallet">
+            <column name="walletId" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="operationType" type="varchar(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="amount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
